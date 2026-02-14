@@ -1,0 +1,236 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+
+  /* 📱 мобильная версия */
+  background-image: url("./mobile.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 💻 ПК версия */
+@media (min-width: 768px) {
+  body {
+    background-image: url("./desktop.jpg");
+  }
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  background: rgba(20, 0, 30, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 48px 56px;
+  max-width: 520px;
+  text-align: center;
+  color: #fff;
+  animation: fadeIn 1.5s ease;
+}
+
+/* 📱 адаптив карточки */
+@media (max-width: 600px) {
+  .card {
+    padding: 32px 24px;
+    margin: 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  margin-bottom: 24px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.signature {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+button {
+  margin-top: 16px;
+  padding: 14px 32px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  background: linear-gradient(135deg, #9f6bff, #ff5fa2);
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(160, 100, 255, 0.4);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Секретное окно ===== */
+
+.secret {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 0, 25, 0.6);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 10;
+}
+
+.secret.visible {
+  opacity: 1;
+}
+
+.secret-card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 40px 48px;
+  border-radius: 20px;
+  max-width: 480px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
+}
+
+.secret-card p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.secret-card pre {
+  background: rgba(10, 10, 20, 0.6);
+  padding: 16px 20px;
+  border-radius: 14px;
+  margin: 24px 0;
+  overflow-x: auto;
+}
+
+.secret-card code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: #bda6ff;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.final-line {
+  opacity: 1;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.replay {
+  margin-top: 20px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  transition: 0.3s ease;
+}
+
+.replay:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Кнопки внизу */
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Replay */
+.replay {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  transition: 0.3s ease;
+}
+
+.replay:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Close */
+.close {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  background: rgba(255, 120, 170, 0.3);
+  color: white;
+  transition: 0.3s ease;
+}
+
+.close:hover {
+  background: rgba(255, 120, 170, 0.6);
+}
+
+/* Каретка */
+.cursor {
+  display: inline-block;
+  margin-left: 4px;
+  animation: blink 1s infinite;
+  color: #bda6ff;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
